@@ -1,23 +1,10 @@
 const fetch = require('node-fetch');
-const moment = require('moment');
 
-const momentDurationFormatSetup = require('moment-duration-format');
-
-momentDurationFormatSetup(moment);
-
-const API_KEY = 'AIzaSyA8oHYJ-Cn_OLX82_F3zk9T4x2u2Lq7Twc';
-const API_URL = 'https://www.googleapis.com/youtube/v3/';
-
-mapVideoFromApi = video => ({
-  id: video.id,
-  title: video.snippet.title,
-  duration: moment.duration(video.contentDetails.duration).format('h:mm:ss'),
-  views: video.statistics.viewCount,
-  thumbnail: video.snippet.thumbnails.high.url,
-  date: video.snippet.publishedAt,
-  channelId: video.snippet.channelId,
-  channelTitle: video.snippet.channelTitle
-})
+const {
+  API_KEY,
+  API_URL,
+  mapVideoFromApi
+} = require('./utils');
 
 getSearchUrl = (query, pageToken = null) => {
   const nextPageToken = pageToken ? `&pageToken=${pageToken}` : ``
