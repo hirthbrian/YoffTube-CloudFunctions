@@ -16,5 +16,8 @@
     "node-fetch": "^2.3.0",
     "ytdl-core": "^0.29.1"
   },
+  "engines": {
+    "node": "8"
+  },
   "private": true
 }

@@ -6,12 +6,12 @@ const {
   mapVideoFromApi
 } = require('./utils');
 
-getSearchUrl = (query, pageToken = null) => {
+const getSearchUrl = (query, pageToken = null) => {
   const nextPageToken = pageToken ? `&pageToken=${pageToken}` : ``
   return `${API_URL}search?part=id&q=${query}&type=video&maxResults=20&key=${API_KEY}` + nextPageToken
 }
 
-getVideosUrl = videoIds => `${API_URL}videos?part=snippet,statistics,contentDetails&id=${videoIds.join(',')}&key=${API_KEY}`
+const getVideosUrl = videoIds => `${API_URL}videos?part=snippet,statistics,contentDetails&id=${videoIds.join(',')}&key=${API_KEY}`
 
 exports.handler = (req, res) => {
   const query = req.query.query;
